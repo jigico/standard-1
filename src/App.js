@@ -48,11 +48,13 @@ function App() {
 
   const handlePush = () => {
     array.push(query);
+    setArray(array);
     setResult(array.join(", "));
   };
 
   const handlePop = () => {
     array.pop();
+    setArray(array);
     setResult(array.join(", "));
   };
 
@@ -71,7 +73,6 @@ function App() {
 
     // 이전 값이랑 결과가 다를 때 실행 - 체크 안하면 계속 삭제함.
     if(prev === array){
-      console.log('같음');
       return;
     }
     array.splice(2, 2, 'kiwi', 'lime');
@@ -100,7 +101,6 @@ function App() {
     const result = array.some((el) => {
       return el === query;
     });
-    console.log(result);
     setResult(result ? 'true' : 'false');
   };
 
@@ -108,13 +108,11 @@ function App() {
     const result = array.every((el) => {
       return el.length > 5; //상세 요구사항에 '5글자 초과' 라고 기재되어 있어서 5초과로 조건 설정.
     });
-    console.log(result);
     setResult(result ? 'true' : 'false');
   };
 
   const handleSort = () => {
     const result = array.sort((a, b) => a.localeCompare(b));
-    console.log(result);
     setResult(result.join(", "));
   };
 
